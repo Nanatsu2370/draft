@@ -195,16 +195,7 @@ async def message_handler(client: Client, message: Message):
             return
         user = auth[2]
         passw = auth[3]
-        token = await get_token(url, user, passw, url_list[uid]["proxy"])
-        if token:
-            url_list[uid][str(url).lower()] = [user, passw, token]
-            await progress_message.edit("✅ Usuario y contraseña guardados.")
-        else:
-            if not token:
-                await progress_message.edit(
-                    "❌ Error al obtener token con las creenciales actuales."
-                )
-        return
+        
 
     # Firmar enlaces
     if re.search("https?://[^\s]+[a-zA-z0-9]", msg, re.IGNORECASE):
